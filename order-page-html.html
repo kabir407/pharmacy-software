@@ -149,6 +149,7 @@
                 </svg>
               </button>
               <div class="flex items-center space-x-4">
+                <!-- Dark Mode Toggle Button (exactly as in your file) -->
                 <button class="p-2 rounded-full transition-all duration-300 relative overflow-hidden bg-gray-100 text-gray-800 hover:bg-gray-200" aria-label="Toggle theme">
                   <div class="relative z-10">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon h-5 w-5 transition-transform duration-300 transform rotate-0">
@@ -490,7 +491,7 @@
               (!fromDate || orderDate >= fromDate) &&
               (!toDate || orderDate <= toDate);
   
-            return matchesSearch && matchesStatus && matchesPrice && matchesPayment && matchesNumItems && matchesCustomerType && matchesDate;
+            return matchesSearch && matchesStatus && matchesPrice && matchesPayment && matchesNumItems && matchesDate;
           });
           currentPage = 1;
           renderTable();
@@ -602,6 +603,134 @@
         });
   
         renderTable();
+      });
+    </script>
+    <!-- Dark Mode Toggle Script (Added without changing any existing lines) -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const themeToggleButton = document.querySelector('button[aria-label="Toggle theme"]');
+        if (!themeToggleButton) {
+          console.error("Theme toggle button not found!");
+          return;
+        }
+        let sunIcon = themeToggleButton.querySelector("svg#sunIcon");
+        if (!sunIcon) {
+          sunIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+          sunIcon.setAttribute("id", "sunIcon");
+          sunIcon.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+          sunIcon.setAttribute("width", "24");
+          sunIcon.setAttribute("height", "24");
+          sunIcon.setAttribute("viewBox", "0 0 24 24");
+          sunIcon.setAttribute("fill", "none");
+          sunIcon.setAttribute("stroke", "currentColor");
+          sunIcon.setAttribute("stroke-width", "2");
+          sunIcon.setAttribute("stroke-linecap", "round");
+          sunIcon.setAttribute("stroke-linejoin", "round");
+          sunIcon.setAttribute("class", "lucide lucide-sun h-5 w-5 absolute inset-0 transition-opacity duration-300 opacity-0");
+          sunIcon.innerHTML = `
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          `;
+          const iconWrapper = themeToggleButton.querySelector("div");
+          if (iconWrapper) {
+            iconWrapper.appendChild(sunIcon);
+          }
+        }
+        themeToggleButton.addEventListener("click", function () {
+          const isDark = document.documentElement.classList.toggle("dark");
+          const moonIcon = themeToggleButton.querySelector("svg.lucide-moon");
+          if (isDark) {
+            sunIcon.classList.remove("opacity-0");
+            sunIcon.classList.add("opacity-100");
+            if (moonIcon) {
+              moonIcon.classList.remove("opacity-100");
+              moonIcon.classList.add("opacity-0");
+            }
+          } else {
+            sunIcon.classList.remove("opacity-100");
+            sunIcon.classList.add("opacity-0");
+            if (moonIcon) {
+              moonIcon.classList.remove("opacity-0");
+              moonIcon.classList.add("opacity-100");
+            }
+          }
+          console.log("Toggled dark mode:", isDark);
+        });
+      });
+    </script>
+    <!-- Chart Initialization Script -->
+    <script>
+      // Hard-coded data (replace with dynamic data later)
+      const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+      const salesData = [2, 6, 3, 5, 8, 4];
+      const profitData = [1.5, 2.5, 2, 3.5, 5, 4.5];
+  
+      // Bar Chart (Monthly Sales)
+      const salesCtx = document.getElementById('salesChart').getContext('2d');
+      new Chart(salesCtx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'Sales',
+              data: salesData,
+              backgroundColor: '#14b8a6',
+              borderColor: '#14b8a6',
+              borderWidth: 1,
+              borderRadius: 4,
+              barThickness: 40,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+          plugins: {
+            legend: { display: false },
+          },
+        },
+      });
+  
+      // Line Chart (Monthly Profit)
+      const profitCtx = document.getElementById('profitChart').getContext('2d');
+      new Chart(profitCtx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'Profit',
+              data: profitData,
+              fill: false,
+              borderColor: '#0ea5e9',
+              backgroundColor: '#0ea5e9',
+              tension: 0.3,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+          plugins: {
+            legend: { display: false },
+          },
+        },
       });
     </script>
   </body>
