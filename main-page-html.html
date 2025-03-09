@@ -30,169 +30,92 @@
       <div class="flex h-screen bg-gray-50 dark:bg-gray-900 transition-all duration-300">
         <!-- Sidebar -->
         <div
-          class="fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-gray-800 shadow-lg transform transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 translate-x-0"
-        >
-          <div class="flex items-center justify-between p-4 border-b dark:border-gray-700">
-            <div class="flex items-center">
-              <div
-                class="h-8 w-8 rounded bg-teal-500 flex items-center justify-center mr-2"
-              >
-                <span class="text-white">📦</span>
-              </div>
-              <h1 class="text-xl font-bold text-teal-500">PharmaSaaS</h1>
+        class="fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-gray-800 shadow-lg transform transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 translate-x-0"
+      >
+        <div class="flex items-center justify-between p-4 border-b dark:border-gray-700">
+          <div class="flex items-center">
+            <div class="h-8 w-8 rounded bg-teal-500 flex items-center justify-center mr-2">
+              <span class="text-white">📦</span>
             </div>
+            <h1 class="text-xl font-bold text-teal-500">PharmaSaaS</h1>
           </div>
-          <nav class="py-4">
-            <a href="/">
-              <button
-                class="flex items-center w-full px-4 py-3 text-left transition-all duration-200 rounded-lg mx-2 my-1 bg-teal-50 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 font-medium shadow-sm"
-              >
-                <span class="mr-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="lucide lucide-chart-no-axes-column h-5 w-5"
-                  >
-                    <line x1="18" x2="18" y1="20" y2="10"></line>
-                    <line x1="12" x2="12" y1="20" y2="4"></line>
-                    <line x1="6" x2="6" y1="20" y2="14"></line>
-                  </svg>
-                </span>
-                <span>Dashboard</span>
-                <div
-                  class="ml-auto w-1.5 h-5 bg-teal-500 dark:bg-teal-400 rounded-full"
-                ></div>
-              </button>
-            </a>
-            <a href="order-page-html.html">
-              <button
-                class="flex items-center w-full px-4 py-3 text-left transition-all duration-200 rounded-lg mx-2 my-1 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/30 hover:text-gray-900 dark:hover:text-gray-200"
-              >
-                <span class="mr-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="lucide lucide-shopping-cart h-5 w-5"
-                  >
-                    <circle cx="8" cy="21" r="1"></circle>
-                    <circle cx="19" cy="21" r="1"></circle>
-                    <path
-                      d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"
-                    ></path>
-                  </svg>
-                </span>
-                <span>Orders</span>
-              </button>
-            </a>
-            <a href="/delivery">
-              <button
-                class="flex items-center w-full px-4 py-3 text-left transition-all duration-200 rounded-lg mx-2 my-1 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/30 hover:text-gray-900 dark:hover:text-gray-200"
-              >
-                <span class="mr-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="lucide lucide-truck h-5 w-5"
-                  >
-                    <path
-                      d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"
-                    ></path>
-                    <path d="M15 18H9"></path>
-                    <path
-                      d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"
-                    ></path>
-                    <circle cx="17" cy="18" r="2"></circle>
-                    <circle cx="7" cy="18" r="2"></circle>
-                  </svg>
-                </span>
-                <span>Delivery</span>
-              </button>
-            </a>
-            <a href="/inventory">
-              <button
-                class="flex items-center w-full px-4 py-3 text-left transition-all duration-200 rounded-lg mx-2 my-1 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/30 hover:text-gray-900 dark:hover:text-gray-200"
-              >
-                <span class="mr-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="lucide lucide-package h-5 w-5"
-                  >
-                    <path
-                      d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"
-                    ></path>
-                    <path d="M12 22V12"></path>
-                    <path
-                      d="m3.3 7 7.703 4.734a2 2 0 0 0 1.994 0L20.7 7"
-                    ></path>
-                    <path d="m7.5 4.27 9 5.15"></path>
-                  </svg>
-                </span>
-                <span>Inventory</span>
-              </button>
-            </a>
-            <a href="/customers">
-              <button
-                class="flex items-center w-full px-4 py-3 text-left transition-all duration-200 rounded-lg mx-2 my-1 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/30 hover:text-gray-900 dark:hover:text-gray-200"
-              >
-                <span class="mr-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="lucide lucide-users h-5 w-5"
-                  >
-                    <path
-                      d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"
-                    ></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                    <path
-                      d="M22 21v-2a4 4 0 0 0-3-3.87"
-                    ></path>
-                    <path
-                      d="M16 3.13a4 4 0 0 1 0 7.75"
-                    ></path>
-                  </svg>
-                </span>
-                <span>Customers</span>
-              </button>
-            </a>
-          </nav>
         </div>
+        <nav class="py-4">
+          <a href="main-page-html.html">
+            <button
+              class="flex items-center w-full px-4 py-3 text-left transition-all duration-200 rounded-lg mx-2 my-1 bg-teal-50 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 font-medium shadow-sm"
+            >
+              <span class="mr-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-no-axes-column h-5 w-5">
+                  <line x1="18" x2="18" y1="20" y2="10"></line>
+                  <line x1="12" x2="12" y1="20" y2="4"></line>
+                  <line x1="6" x2="6" y1="20" y2="14"></line>
+                </svg>
+              </span>
+              <span>Dashboard</span>
+              <div class="ml-auto w-1.5 h-5 bg-teal-500 dark:bg-teal-400 rounded-full"></div>
+            </button>
+          </a>
+          <a href="order-page-html.html">
+            <button id="ordersNavButton" class="flex items-center w-full px-4 py-3 text-left transition-all duration-200 rounded-lg mx-2 my-1 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/30 hover:text-gray-900 dark:hover:text-gray-200">
+              <span class="mr-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart h-5 w-5">
+                  <circle cx="8" cy="21" r="1"></circle>
+                  <circle cx="19" cy="21" r="1"></circle>
+                  <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+                </svg>
+              </span>
+              <span>Orders</span>
+            </button>
+          </a>
+          <a href="delivery‑drivers.html">
+            <button
+              class="flex items-center w-full px-4 py-3 text-left transition-all duration-200 rounded-lg mx-2 my-1 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/30 hover:text-gray-900 dark:hover:text-gray-200"
+            >
+              <span class="mr-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-truck h-5 w-5">
+                  <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path>
+                  <path d="M15 18H9"></path>
+                  <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path>
+                  <circle cx="17" cy="18" r="2"></circle>
+                  <circle cx="7" cy="18" r="2"></circle>
+                </svg>
+              </span>
+              <span>Delivery</span>
+            </button>
+          </a>
+          <a href="inventory.html">
+            <button
+              class="flex items-center w-full px-4 py-3 text-left transition-all duration-200 rounded-lg mx-2 my-1 bg-teal-50 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 font-medium shadow-sm"
+            >
+              <span class="mr-3">
+                <!-- Inventory icon (feel free to change if desired) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-box h-5 w-5">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                  <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+              </span>
+              <span>Inventory</span>
+            </button>
+          </a>
+          <a href="system-admin.html">
+            <button
+              class="flex items-center w-full px-4 py-3 text-left transition-all duration-200 rounded-lg mx-2 my-1 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/30 hover:text-gray-900 dark:hover:text-gray-200"
+            >
+              <span class="mr-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users h-5 w-5">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </span>
+              <span>Customers</span>
+            </button>
+          </a>
+        </nav>
+      </div>
 
         <!-- Main Content Area -->
         <div class="flex-1 flex flex-col overflow-hidden">
@@ -609,3 +532,57 @@
     </script>
   </body>
 </html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get the current file name from the URL.
+      const currentUrl = new URL(window.location.href);
+      // For example, if the pathname is "/delivery‑drivers.html", currentFile will be "delivery‑drivers.html"
+      const currentFile = currentUrl.pathname.substring(currentUrl.pathname.lastIndexOf('/') + 1) || "main-page-html.html";
+      
+      // Loop through all sidebar links in the <nav>
+      const navLinks = document.querySelectorAll('nav a');
+      
+      navLinks.forEach(link => {
+        // Build a URL object using the link's href (this handles relative paths)
+        const linkUrl = new URL(link.getAttribute('href'), window.location.origin);
+        const linkFile = linkUrl.pathname.substring(linkUrl.pathname.lastIndexOf('/') + 1);
+        
+        // Get the button inside the link
+        const btn = link.querySelector('button');
+        if (!btn) return;
+        
+        // If the file names match exactly, add the active classes;
+        // otherwise remove them.
+        if (linkFile === currentFile) {
+          btn.classList.add(
+            'bg-teal-50',
+            'dark:bg-teal-900/30',
+            'text-teal-600',
+            'dark:text-teal-400',
+            'font-medium',
+            'shadow-sm'
+          );
+          // If an active indicator element exists (the blue vertical div), ensure it is visible.
+          const indicator = btn.querySelector('div');
+          if (indicator) {
+            indicator.style.display = 'block';
+          }
+        } else {
+          btn.classList.remove(
+            'bg-teal-50',
+            'dark:bg-teal-900/30',
+            'text-teal-600',
+            'dark:text-teal-400',
+            'font-medium',
+            'shadow-sm'
+          );
+          // Hide the indicator if present.
+          const indicator = btn.querySelector('div');
+          if (indicator) {
+            indicator.style.display = 'none';
+          }
+        }
+      });
+    });
+    </script>
+    
