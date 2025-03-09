@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charSet="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preload" href="/_next/static/media/a34f9d1faa5f3315-s.p.woff2" as="font" crossorigin="" type="font/woff2" />
+    <link rel="stylesheet" href="page-css.css" data-precedence="next" />
+    <link rel="stylesheet" href="page-css-2.css" data-precedence="next" />
+    <title>Inventory - PharmaSaaS Dashboard</title>
+    <meta name="description" content="Inventory management for PharmaSaaS" />
+    <meta name="generator" content="v0.dev" />
+    <meta name="next-size-adjust" />
+    <style>
+      /* Additional styling for Inventory page */
+      .disabled {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+
+      /* More Filters dropdown styling (if needed) */
+      #moreFiltersContent {
+        display: none;
+        position: absolute;
+        top: 110%;
+        right: 0;
+        background: white;
+        border: 1px solid #ccc;
+        z-index: 10;
+        padding: 12px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        width: 250px;
+      }
+      #moreFiltersContent label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 0.875rem;
+      }
+      #moreFiltersContent input,
+      #moreFiltersContent select {
+        width: 100%;
+        padding: 4px 6px;
+        margin-top: 4px;
+        margin-bottom: 8px;
+        font-size: 0.875rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      /* –––––– Advanced Animated Toggle Switch –––––– */
+      .toggle-switch-wrapper {
+        display: inline-block;
+        position: relative;
+        width: 80px;
+        height: 40px;
+      }
+      .toggle-checkbox {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .toggle-label {
+        display: block;
+        cursor: pointer;
+        user-select: none;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        background: linear-gradient(45deg, #d1fae5, #bfdbfe);
+        transition: background 0.4s ease;
+      }
+      .toggle-knob {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        width: 32px;
+        height: 32px;
+        background: white;
+        border-radius: 50%;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+      .toggle-text {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        font-size: 0.75rem;
+        font-weight: 600;
+        pointer-events: none;
+        transition: opacity 0.4s ease;
+      }
+      .toggle-text.toggle-text-left {
+        left: 10px;
+        color: #334155;
+        opacity: 1;
+      }
+      .toggle-text.toggle-text-right {
+        right: 10px;
+        color: #fff;
+        opacity: 0;
+      }
+      .toggle-checkbox:checked + .toggle-label {
+        background: linear-gradient(45deg, #14b8a6, #0ea5e9);
+      }
+      .toggle-checkbox:checked + .toggle-label .toggle-knob {
+        transform: translateX(40px);
+      }
+      .toggle-checkbox:checked + .toggle-label .toggle-text.toggle-text-left {
+        opacity: 0;
+      }
+      .toggle-checkbox:checked + .toggle-label .toggle-text.toggle-text-right {
+        opacity: 1;
+      }
+      /* –––––– End Advanced Toggle Styles –––––– */
+
+      /* New Styles for Price Mode Selector */
+      #priceModeSelect {
+        position: relative;
+        appearance: none;
+        cursor: pointer;
+      }
+      #priceModeSelect:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.5);
+      }
+      #priceModeSelect option {
+        background: white;
+        color: #334155;
+      }
+      /* Animation when selecting an option */
+      @keyframes selectPulse {
+        0% {
+          transform: scale(1);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        50% {
+          transform: scale(1.05);
+          box-shadow: 0 4px 12px rgba(20, 184, 166, 0.5);
+        }
+        100% {
+          transform: scale(1);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+      }
+      .animate-select {
+        animation: selectPulse 0.5s ease-in-out;
+      }
+    </style>
+  </head>
+  <body class="__className_d65c78">
+    <div class="min-h-screen transition-colors duration-300">
+      <div class="flex h-screen bg-gray-50 dark:bg-gray-900 transition-all duration-300">
+        <!-- Sidebar (same as your other pages) -->
+        <div
+          class="fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-gray-800 shadow-lg transform transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 translate-x-0"
+        >
+          <div class="flex items-center justify-between p-4 border-b dark:border-gray-700">
+            <div class="flex items-center">
+              <div class="h-8 w-8 rounded bg-teal-500 flex items-center justify-center mr-2">
+                <span class="text-white">📦</span>
+              </div>
+              <h1 class="text-xl font-bold text-teal-500">PharmaSaaS</h1>
+            </div>
+          </div>
+          <nav class="py-4">
+            <a href="main-page-html.html">
+              <button
+                class="flex items-center w-full px-4 py-3 text-left transition-all duration-200 rounded-lg mx-2 my-1 bg-teal-50 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 font-medium shadow-sm"
+              >
+                <span class="mr-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-no-axes-column h-5 w-5">
+                    <line x1="18" x2="18" y1="20" y2="10"></line>
+                    <line x1="12" x2="12" y1="20" y2="4"></line>
+                    <line x1="6" x2="6" y1="20" y2="14"></line>
+                  </svg>
+                </span>
+                <span>Dashboard</span>
+                <div class="ml-auto w-1.5 h-5 bg-teal-500 dark:bg-teal-400 rounded-full"></div>
+              </button>
+            </a>
+            <a href="order-page-html.html">
+              <button id="ordersNavButton" class="flex items-center w-full px-4 py-3 text-left transition-all duration-200 rounded-lg mx-2 my-1 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/30 hover:text-gray-900 dark:hover:text-gray-200">
+                <span class="mr-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart h-5 w-5">
+                    <circle cx="8" cy="21" r="1"></circle>
+                    <circle cx="19" cy="21" r="1"></circle>
+                    <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+                  </svg>
+                </span>
+                <span>Orders</span>
+              </button>
+            </a>
+            <a href="delivery‑drivers.html">
+              <button
+                class="flex items-center w-full px-4 py-3 text-left transition-all duration-200 rounded-lg mx-2 my-1 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/30 hover:text-gray-900 dark:hover:text-gray-200"
+              >
+                <span class="mr-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-truck h-5 w-5">
+                    <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path>
+                    <path d="M15 18H9"></path>
+                    <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path>
+                    <circle cx="17" cy="18" r="2"></circle>
+                    <circle cx="7" cy="18" r="2"></circle>
+                  </svg>
+                </span>
+                <span>Delivery</span>
+              </button>
+            </a>
+            <a href="inventory.html">
+              <button
+                class="flex items-center w-full px-4 py-3 text-left transition-all duration-200 rounded-lg mx-2 my-1 bg-teal-50 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 font-medium shadow-sm"
+              >
+                <span class="mr-3">
+                  <!-- Inventory icon (feel free to change if desired) -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-box h-5 w-5">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                  </svg>
+                </span>
+                <span>Inventory</span>
+              </button>
+            </a>
+            <a href="system-admin.html">
+              <button
+                class="flex items-center w-full px-4 py-3 text-left transition-all duration-200 rounded-lg mx-2 my-1 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/30 hover:text-gray-900 dark:hover:text-gray-200"
+              >
+                <span class="mr-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users h-5 w-5">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                </span>
+                <span>Customers</span>
+              </button>
+            </a>
+          </nav>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+          <header class="bg-white dark:bg-gray-800 shadow-sm z-10">
+            <div class="flex items-center justify-between p-4">
+              <button class="p-1 rounded-md lg:hidden focus:outline-none focus:ring-2 focus:ring-teal-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu h-6 w-6 text-gray- Cap5dark:text-gray-400">
+                  <line x1="4" x2="20" y1="12" y2="12"></line>
+                  <line x1="4" x2="20" y1="6" y2="6"></line>
+                  <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+              </button>
+              <div class="flex items-center space-x-4">
+                <!-- Dark Mode Toggle Button (same structure as your other pages) -->
+                <button id="themeToggle" class="p-2 rounded-full transition-all duration-300 relative overflow-hidden bg-gray-100 text-gray-800 hover:bg-gray-200" aria-label="Toggle theme">
+                  <div class="relative z-10 icon-wrapper">
+                    <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon h-5 w-5 transition-opacity duration-300">
+                      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                    </svg>
+                    <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun h-5 w-5 absolute inset-0 transition-opacity duration-300 opacity-0">
+                      <circle cx="12" cy="12" r="5"></circle>
+                      <line x1="12" y1="1" x2="12" y2="3"></line>
+                      <line x1="12" y1="21" x2="12" y2="23"></line>
+                      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                      <line x1="1" y1="12" x2="3" y2="12"></line>
+                      <line x1="21" y1="12" x2="23" y2="12"></line>
+                      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                  </div>
+                  <span class="absolute inset-0 transition-transform duration-500 bg-gray-700 translate-x-full"></span>
+                </button>
+                <button class="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell h-6 w-6 text-gray-500 dark:text-gray-400">
+                    <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+                    <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+                  </svg>
+                </button>
+                <button class="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user h-6 w-6 text-gray-500 dark:text-gray-400">
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </header>
+          <main class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-gray-900">
+            <h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Inventory Management</h1>
+            <!-- Search Bar -->
+            <div class="relative w-full sm:w-64 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500 dark:text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input id="inventorySearch" type="search" placeholder="Search inventory..." class="w-full h-10 pl-8 pr-3 rounded-md border border-input bg-background text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 dark:bg-gray-700 dark:text-gray-200" />
+            </div>
+            <!-- Add New Stock Button -->
+            <div class="flex justify-end mb-4">
+              <button id="addStockButton" class="border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 text-sm">
+                Add New Stock
+              </button>
+            </div>
+            <!-- Inventory Table -->
+            <div class="rounded-lg border overflow-auto">
+              <table id="inventoryTable" class="w-full text-sm">
+                <thead class="bg-gray-50 dark:bg-gray-900/50">
+                  <tr class="border-b">
+                    <th class="p-4 text-left">Medicine Name</th>
+                    <th class="p-4 text-left">Quantity</th>
+                    <th class="p-4 text-left">Price per Piece</th>
+                    <th class="p-4 text-left">Total Stock Price</th>
+                  </tr>
+                </thead>
+                <tbody id="inventoryTableBody">
+                  <!-- Inventory rows inserted dynamically -->
+                </tbody>
+              </table>
+            </div>
+            <!-- Total Inventory Value -->
+            <div class="mt-4 text-right font-semibold text-lg text-gray-900 dark:text-white">
+              Total Inventory Value: $<span id="totalInventoryValue">0.00</span>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add New Stock Modal (Updated) -->
+    <div id="addStockModal" class="fixed inset-0 flex items-center justify-center bg-black/50 hidden">
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-80">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Add New Stock</h2>
+        <form id="addStockForm" class="space-y-4">
+          <div>
+            <label for="newMedicineName" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Medicine Name</label>
+            <input type="text" id="newMedicineName" required class="mt-1 block w-full rounded-md border border-input bg-background px-3 py-2 text-sm dark:bg-gray-700 dark:text-gray-200" />
+          </div>
+          <div>
+            <label for="newMedicineQuantity" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Quantity</label>
+            <input type="number" id="newMedicineQuantity" required class="mt-1 block w-full rounded-md border border-input bg-background px-3 py-2 text-sm dark:bg-gray-700 dark:text-gray-200" />
+          </div>
+          <div>
+            <label for="priceModeSelect" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Price Mode</label>
+            <select id="priceModeSelect" required class="mt-1 block w-full rounded-md border border-input bg-background px-3 py-2 text-sm dark:bg-gray-700 dark:text-gray-200 transition-all duration-300 ease-in-out" style="background: linear-gradient(45deg, #d1fae5, #bfdbfe);">
+              <option value="" disabled selected>Select Price Mode</option>
+              <option value="perPiece">Price per Piece</option>
+              <option value="wholeOrder">Whole Order</option>
+            </select>
+          </div>
+          <div>
+            <label for="newMedicinePrice" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Price</label>
+            <input type="number" step="0.01" id="newMedicinePrice" required class="mt-1 block w-full rounded-md border border-input bg-background px-3 py-2 text-sm dark:bg-gray-700 dark:text-gray-200" />
+          </div>
+          <div class="flex justify-end space-x-2">
+            <button type="button" id="cancelAddStock" class="border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 text-sm">Cancel</button>
+            <button type="submit" class="border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 text-sm">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- JavaScript for Inventory Management and Dark Mode (Updated) -->
+    <script>
+      // Sample inventory data
+      let medicinesData = [
+        { name: "Paracetamol", quantity: 100, pricePerPiece: 0.25 },
+        { name: "Ibuprofen", quantity: 50, pricePerPiece: 0.50 },
+        { name: "Aspirin", quantity: 200, pricePerPiece: 0.10 }
+      ];
+
+      function renderInventory() {
+        const tableBody = document.getElementById("inventoryTableBody");
+        tableBody.innerHTML = "";
+        let totalValue = 0;
+        medicinesData.forEach((medicine) => {
+          const rowTotal = medicine.quantity * medicine.pricePerPiece;
+          totalValue += rowTotal;
+          const tr = document.createElement("tr");
+          tr.className = "border-b hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors";
+          tr.innerHTML = `
+            <td class="p-4">${medicine.name}</td>
+            <td class="p-4">${medicine.quantity}</td>
+            <td class="p-4">$${medicine.pricePerPiece.toFixed(2)}</td>
+            <td class="p-4">$${rowTotal.toFixed(2)}</td>
+          `;
+          tableBody.appendChild(tr);
+        });
+        document.getElementById("totalInventoryValue").textContent = totalValue.toFixed(2);
+      }
+
+      // Search inventory functionality
+      document.getElementById("inventorySearch").addEventListener("keyup", function() {
+        const searchValue = this.value.toLowerCase();
+        const filtered = medicinesData.filter(med => med.name.toLowerCase().includes(searchValue));
+        if (searchValue) {
+          renderInventoryFiltered(filtered);
+        } else {
+          renderInventory();
+        }
+      });
+
+      function renderInventoryFiltered(filteredData) {
+        const tableBody = document.getElementById("inventoryTableBody");
+        tableBody.innerHTML = "";
+        let totalValue = 0;
+        filteredData.forEach((medicine) => {
+          const rowTotal = medicine.quantity * medicine.pricePerPiece;
+          totalValue += rowTotal;
+          const tr = document.createElement("tr");
+          tr.className = "border-b hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors";
+          tr.innerHTML = `
+            <td class="p-4">${medicine.name}</td>
+            <td class="p-4">${medicine.quantity}</td>
+            <td class="p-4">$${medicine.pricePerPiece.toFixed(2)}</td>
+            <td class="p-4">$${rowTotal.toFixed(2)}</td>
+          `;
+          tableBody.appendChild(tr);
+        });
+        document.getElementById("totalInventoryValue").textContent = totalValue.toFixed(2);
+      }
+
+      // Add New Stock Modal logic
+      document.getElementById("addStockButton").addEventListener("click", function() {
+        document.getElementById("addStockModal").classList.remove("hidden");
+      });
+
+      document.getElementById("cancelAddStock").addEventListener("click", function() {
+        document.getElementById("addStockModal").classList.add("hidden");
+      });
+
+      // Animation on price mode selection
+      const priceModeSelect = document.getElementById("priceModeSelect");
+      priceModeSelect.addEventListener("change", function() {
+        this.classList.add("animate-select");
+        setTimeout(() => this.classList.remove("animate-select"), 500); // Match animation duration
+        // Update background gradient based on selection
+        if (this.value === "perPiece") {
+          this.style.background = "linear-gradient(45deg, #d1fae5, #bfdbfe)";
+        } else if (this.value === "wholeOrder") {
+          this.style.background = "linear-gradient(45deg, #14b8a6, #0ea5e9)";
+        }
+      });
+
+      document.getElementById("addStockForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        const name = document.getElementById("newMedicineName").value;
+        const quantity = parseInt(document.getElementById("newMedicineQuantity").value);
+        const priceMode = document.getElementById("priceModeSelect").value;
+        let price = parseFloat(document.getElementById("newMedicinePrice").value);
+
+        if (priceMode === "wholeOrder") {
+          price = price / quantity; // Convert to price per piece
+        }
+
+        medicinesData.push({ name, quantity, pricePerPiece: price });
+        this.reset();
+        priceModeSelect.style.background = "linear-gradient(45deg, #d1fae5, #bfdbfe)"; // Reset gradient
+        document.getElementById("addStockModal").classList.add("hidden");
+        renderInventory();
+      });
+
+      // Initial render of inventory
+      renderInventory();
+
+      // Dark mode toggle logic (same as your other pages)
+      document.getElementById("themeToggle").addEventListener("click", function () {
+        document.documentElement.classList.toggle("dark");
+        const moon = document.getElementById("moonIcon");
+        const sun = document.getElementById("sunIcon");
+        if (document.documentElement.classList.contains("dark")) {
+          moon.style.opacity = "0";
+          sun.style.opacity = "1";
+        } else {
+          moon.style.opacity = "1";
+          sun.style.opacity = "0";
+        }
+      });
+    </script>
+  </body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get the current file name from the URL.
+      const currentUrl = new URL(window.location.href);
+      // For example, if the pathname is "/delivery‑drivers.html", currentFile will be "delivery‑drivers.html"
+      const currentFile = currentUrl.pathname.substring(currentUrl.pathname.lastIndexOf('/') + 1) || "main-page-html.html";
+      
+      // Loop through all sidebar links in the <nav>
+      const navLinks = document.querySelectorAll('nav a');
+      
+      navLinks.forEach(link => {
+        // Build a URL object using the link's href (this handles relative paths)
+        const linkUrl = new URL(link.getAttribute('href'), window.location.origin);
+        const linkFile = linkUrl.pathname.substring(linkUrl.pathname.lastIndexOf('/') + 1);
+        
+        // Get the button inside the link
+        const btn = link.querySelector('button');
+        if (!btn) return;
+        
+        // If the file names match exactly, add the active classes;
+        // otherwise remove them.
+        if (linkFile === currentFile) {
+          btn.classList.add(
+            'bg-teal-50',
+            'dark:bg-teal-900/30',
+            'text-teal-600',
+            'dark:text-teal-400',
+            'font-medium',
+            'shadow-sm'
+          );
+          // If an active indicator element exists (the blue vertical div), ensure it is visible.
+          const indicator = btn.querySelector('div');
+          if (indicator) {
+            indicator.style.display = 'block';
+          }
+        } else {
+          btn.classList.remove(
+            'bg-teal-50',
+            'dark:bg-teal-900/30',
+            'text-teal-600',
+            'dark:text-teal-400',
+            'font-medium',
+            'shadow-sm'
+          );
+          // Hide the indicator if present.
+          const indicator = btn.querySelector('div');
+          if (indicator) {
+            indicator.style.display = 'none';
+          }
+        }
+      });
+    });
+    </script>
+    
