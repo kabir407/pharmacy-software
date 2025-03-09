@@ -26,7 +26,7 @@
         border: 1px solid #ccc;
         z-index: 10;
         padding: 12px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         width: 250px;
       }
       #moreFiltersContent label {
@@ -54,13 +54,51 @@
         text-align: center;
         line-height: 1;
       }
+      .standout-button {
+  background: linear-gradient(45deg, #0ea5e9, #14b8a6); /* Vibrant gradient */
+  color: aqua; /* Matches your inline style */
+  border: 2px solid #0ea5e9; /* Thicker, matching border */
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4); /* Soft glow */
+  transition: all 0.3s ease-in-out; /* Smooth transitions */
+}
+
+.standout-button:hover {
+  background: linear-gradient(45deg, #14b8a6, #0ea5e9); /* Reverse gradient on hover */
+  transform: translateY(-2px); /* Slight lift */
+  box-shadow: 0 6px 16px rgba(14, 165, 233, 0.6); /* Stronger glow */
+  color: white; /* Override hover:text-accent-foreground for contrast */
+}
+
+.standout-button:active {
+  transform: translateY(0); /* Pressed effect */
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.3); /* Reduced shadow */
+}
+
+/* Subtle pulse animation to draw attention */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(14, 165, 233, 0.7);
+  }
+  100% {
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
+  }
+}
+
+.standout-button {
+  animation: pulseGlow 2s infinite ease-in-out; /* Continuous subtle pulse */
+}
     </style>
   </head>
   <body class="__className_d65c78">
     <div class="min-h-screen transition-colors duration-300">
       <div class="flex h-screen bg-gray-50 dark:bg-gray-900 transition-all duration-300">
         <!-- Sidebar -->
-        <div class="fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-gray-800 shadow-lg transform transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 translate-x-0">
+        <div
+          class="fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-gray-800 shadow-lg transform transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 translate-x-0"
+        >
           <div class="flex items-center justify-between p-4 border-b dark:border-gray-700">
             <div class="flex items-center">
               <div class="h-8 w-8 rounded bg-teal-500 flex items-center justify-center mr-2">
@@ -71,7 +109,9 @@
           </div>
           <nav class="py-4">
             <a href="main-page-html.html">
-              <button class="flex items-center w-full px-4 py-3 text-left transition-all duration-200 rounded-lg mx-2 my-1 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/30 hover:text-gray-900 dark:hover:text-gray-200">
+              <button
+                class="flex items-center w-full px-4 py-3 text-left transition-all duration-200 rounded-lg mx-2 my-1 bg-teal-50 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 font-medium shadow-sm"
+              >
                 <span class="mr-3">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-no-axes-column h-5 w-5">
                     <line x1="18" x2="18" y1="20" y2="10"></line>
@@ -80,9 +120,10 @@
                   </svg>
                 </span>
                 <span>Dashboard</span>
+                <div class="ml-auto w-1.5 h-5 bg-teal-500 dark:bg-teal-400 rounded-full"></div>
               </button>
             </a>
-            <a href="/orders">
+            <a href="order-page-html.html">
               <button id="ordersNavButton" class="flex items-center w-full px-4 py-3 text-left transition-all duration-200 rounded-lg mx-2 my-1 bg-teal-50 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 font-medium shadow-sm">
                 <span class="mr-3">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart h-5 w-5">
@@ -95,8 +136,10 @@
                 <div class="ml-auto w-1.5 h-5 bg-teal-500 dark:bg-teal-400 rounded-full"></div>
               </button>
             </a>
-            <a href="/delivery">
-              <button class="flex items-center w-full px-4 py-3 text-left transition-all duration-200 rounded-lg mx-2 my-1 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/30 hover:text-gray-900 dark:hover:text-gray-200">
+            <a href="delivery‑drivers.html">
+              <button
+                class="flex items-center w-full px-4 py-3 text-left transition-all duration-200 rounded-lg mx-2 my-1 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/30 hover:text-gray-900 dark:hover:text-gray-200"
+              >
                 <span class="mr-3">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-truck h-5 w-5">
                     <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path>
@@ -109,21 +152,24 @@
                 <span>Delivery</span>
               </button>
             </a>
-            <a href="/inventory">
-              <button class="flex items-center w-full px-4 py-3 text-left transition-all duration-200 rounded-lg mx-2 my-1 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/30 hover:text-gray-900 dark:hover:text-gray-200">
+            <a href="inventory.html">
+              <button
+                class="flex items-center w-full px-4 py-3 text-left transition-all duration-200 rounded-lg mx-2 my-1 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/30 hover:text-gray-900 dark:hover:text-gray-200"
+              >
                 <span class="mr-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-package h-5 w-5">
-                    <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"></path>
-                    <path d="M12 22V12"></path>
-                    <path d="m3.3 7 7.703 4.734a2 2 0 0 0 1.994 0L20.7 7"></path>
-                    <path d="m7.5 4.27 9 5.15"></path>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-box h-5 w-5">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
                   </svg>
                 </span>
                 <span>Inventory</span>
               </button>
             </a>
-            <a href="/customers">
-              <button class="flex items-center w-full px-4 py-3 text-left transition-all duration-200 rounded-lg mx-2 my-1 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/30 hover:text-gray-900 dark:hover:text-gray-200">
+            <a href="system-admin.html">
+              <button
+                class="flex items-center w-full px-4 py-3 text-left transition-all duration-200 rounded-lg mx-2 my-1 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/30 hover:text-gray-900 dark:hover:text-gray-200"
+              >
                 <span class="mr-3">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users h-5 w-5">
                     <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
@@ -137,6 +183,7 @@
             </a>
           </nav>
         </div>
+
         <!-- Main Content Area -->
         <div class="flex-1 flex flex-col overflow-hidden">
           <header class="bg-white dark:bg-gray-800 shadow-sm z-10">
@@ -149,11 +196,22 @@
                 </svg>
               </button>
               <div class="flex items-center space-x-4">
-                <!-- Dark Mode Toggle Button (exactly as in your file) -->
-                <button class="p-2 rounded-full transition-all duration-300 relative overflow-hidden bg-gray-100 text-gray-800 hover:bg-gray-200" aria-label="Toggle theme">
+                <!-- Dark Mode Toggle Button -->
+                <button id="themeToggle" class="p-2 rounded-full transition-all duration-300 relative overflow-hidden bg-gray-100 text-gray-800 hover:bg-gray-200" aria-label="Toggle theme">
                   <div class="relative z-10">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon h-5 w-5 transition-transform duration-300 transform rotate-0">
+                    <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon h-5 w-5 transition-opacity duration-300">
                       <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                    </svg>
+                    <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun h-5 w-5 absolute inset-0 transition-opacity duration-300 opacity-0">
+                      <circle cx="12" cy="12" r="5"></circle>
+                      <line x1="12" y1="1" x2="12" y2="3"></line>
+                      <line x1="12" y1="21" x2="12" y2="23"></line>
+                      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                      <line x1="1" y1="12" x2="3" y2="12"></line>
+                      <line x1="21" y1="12" x2="23" y2="12"></line>
+                      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                   </div>
                   <span class="absolute inset-0 transition-transform duration-500 bg-gray-700 translate-x-full"></span>
@@ -192,7 +250,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download h-4 w-4">
                       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                       <polyline points="7 10 12 15 17 10"></polyline>
-                      <line x1="12" x2="12" y1="15" y2="3"></line>
+                      <line x1="12" y1="15" x2="12" y2="3"></line>
                     </svg>
                     <span>Export</span>
                   </button>
@@ -203,6 +261,14 @@
                       <rect x="6" y="14" width="12" height="8" rx="1"></rect>
                     </svg>
                     <span>Print</span>
+                  </button>
+                  <!-- New Assign Order Button -->
+                  <button id="assignOrderButton" style="color: aqua;" class="whitespace-nowrap text-sm font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 flex items-center gap-1 standout-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus h-4 w-4">
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    <span>Assign Order</span>
                   </button>
                 </div>
               </div>
@@ -351,6 +417,42 @@
         </div>
       </div>
     </div>
+    
+    <!-- Assign Order Modal -->
+    <div id="assignOrderModal" class="fixed inset-0 flex items-center justify-center bg-black/50 hidden">
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-96">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Assign Order</h2>
+        <form id="assignOrderForm" class="space-y-4">
+          <div>
+            <label for="newOrderId" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Order ID</label>
+            <input type="text" id="newOrderId" required class="mt-1 block w-full rounded-md border border-input bg-background px-3 py-2 text-sm dark:bg-gray-700 dark:text-gray-200" />
+          </div>
+          <div>
+            <label for="newCustomerName" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Customer Name</label>
+            <input type="text" id="newCustomerName" required class="mt-1 block w-full rounded-md border border-input bg-background px-3 py-2 text-sm dark:bg-gray-700 dark:text-gray-200" />
+          </div>
+          <div>
+            <label for="newEmail" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+            <input type="email" id="newEmail" required class="mt-1 block w-full rounded-md border border-input bg-background px-3 py-2 text-sm dark:bg-gray-700 dark:text-gray-200" />
+          </div>
+          <div>
+            <label for="newDate" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Date</label>
+            <input type="date" id="newDate" required class="mt-1 block w-full rounded-md border border-input bg-background px-3 py-2 text-sm dark:bg-gray-700 dark:text-gray-200" />
+          </div>
+          <div>
+            <label for="newTotal" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Total Price ($)</label>
+            <input type="number" step="0.01" id="newTotal" required class="mt-1 block w-full rounded-md border border-input bg-background px-3 py-2 text-sm dark:bg-gray-700 dark:text-gray-200" />
+          </div>
+          <!-- Hidden field for default status "Pending" -->
+          <input type="hidden" id="newStatus" value="Pending" />
+          <div class="flex justify-end space-x-2">
+            <button type="button" id="cancelAssignOrder" class="border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 text-sm">Cancel</button>
+            <button type="submit" class="border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 text-sm">Assign</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
     <!-- JavaScript for functionalities -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -453,7 +555,6 @@
         function applyFilters() {
           const searchValue = document.getElementById("searchInput").value.toLowerCase();
           const statusValue = document.getElementById("statusFilter").value;
-          // Additional filters from More Filters content
           const priceMin = document.getElementById("priceMin").value;
           const priceMax = document.getElementById("priceMax").value;
           const paymentMethod = document.getElementById("paymentMethod").value;
@@ -470,20 +571,15 @@
   
             const matchesStatus = statusValue === "All" || order.status === statusValue;
   
-            // For demonstration purposes, we'll assume:
-            // - total price is parsed from order.total (removing $) for range filtering
             const orderPrice = parseFloat(order.total.replace("$", ""));
             const matchesPrice =
               (!priceMin || orderPrice >= parseFloat(priceMin)) &&
               (!priceMax || orderPrice <= parseFloat(priceMax));
   
-            // Payment method, number of items, and customer type are not in sample data.
-            // We'll assume "All" always passes.
             const matchesPayment = paymentMethod === "All";
             const matchesNumItems = !numItems || true;
             const matchesCustomerType = customerType === "All";
   
-            // Date range filtering – assuming order.date is in M/D/YYYY format.
             let orderDate = new Date(order.date);
             let fromDate = dateFrom ? new Date(dateFrom) : null;
             let toDate = dateTo ? new Date(dateTo) : null;
@@ -499,8 +595,6 @@
   
         document.getElementById("searchInput").addEventListener("keyup", applyFilters);
         document.getElementById("statusFilter").addEventListener("change", applyFilters);
-  
-        // Listen for changes in the more filters inputs
         document.getElementById("priceMin").addEventListener("keyup", applyFilters);
         document.getElementById("priceMax").addEventListener("keyup", applyFilters);
         document.getElementById("paymentMethod").addEventListener("change", applyFilters);
@@ -556,16 +650,13 @@
           document.body.removeChild(downloadLink);
         }
   
-        // Add click listeners to row checkbox buttons
         function addRowCheckboxListeners() {
           const rowCheckboxes = document.querySelectorAll("#ordersTableBody button[role='checkbox']");
           rowCheckboxes.forEach(cb => {
             cb.addEventListener("click", function () {
               let newState = this.getAttribute("data-state") === "unchecked" ? "checked" : "unchecked";
               this.setAttribute("data-state", newState);
-              // Show tick mark if checked
               this.textContent = newState === "checked" ? "✓" : "";
-              // Update header checkbox if necessary
               const allRowCbs = document.querySelectorAll("#ordersTableBody button[role='checkbox']");
               const headerCb = document.querySelector("th button[role='checkbox']");
               const allChecked = Array.from(allRowCbs).every(c => c.getAttribute("data-state") === "checked");
@@ -575,7 +666,6 @@
           });
         }
   
-        // Header "Select all" checkbox listener
         const headerCheckbox = document.querySelector("th button[role='checkbox']");
         headerCheckbox.addEventListener("click", function () {
           let newState = this.getAttribute("data-state") === "unchecked" ? "checked" : "unchecked";
@@ -588,7 +678,6 @@
           });
         });
   
-        // More Filters dropdown toggle
         document.getElementById("moreFiltersButton").addEventListener("click", function () {
           const content = document.getElementById("moreFiltersContent");
           if (content.style.display === "none" || content.style.display === "") {
@@ -602,136 +691,102 @@
           }
         });
   
-        renderTable();
-      });
-    </script>
-    <!-- Dark Mode Toggle Script (Added without changing any existing lines) -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const themeToggleButton = document.querySelector('button[aria-label="Toggle theme"]');
-        if (!themeToggleButton) {
-          console.error("Theme toggle button not found!");
-          return;
-        }
-        let sunIcon = themeToggleButton.querySelector("svg#sunIcon");
-        if (!sunIcon) {
-          sunIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-          sunIcon.setAttribute("id", "sunIcon");
-          sunIcon.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-          sunIcon.setAttribute("width", "24");
-          sunIcon.setAttribute("height", "24");
-          sunIcon.setAttribute("viewBox", "0 0 24 24");
-          sunIcon.setAttribute("fill", "none");
-          sunIcon.setAttribute("stroke", "currentColor");
-          sunIcon.setAttribute("stroke-width", "2");
-          sunIcon.setAttribute("stroke-linecap", "round");
-          sunIcon.setAttribute("stroke-linejoin", "round");
-          sunIcon.setAttribute("class", "lucide lucide-sun h-5 w-5 absolute inset-0 transition-opacity duration-300 opacity-0");
-          sunIcon.innerHTML = `
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-          `;
-          const iconWrapper = themeToggleButton.querySelector("div");
-          if (iconWrapper) {
-            iconWrapper.appendChild(sunIcon);
-          }
-        }
-        themeToggleButton.addEventListener("click", function () {
-          const isDark = document.documentElement.classList.toggle("dark");
-          const moonIcon = themeToggleButton.querySelector("svg.lucide-moon");
-          if (isDark) {
-            sunIcon.classList.remove("opacity-0");
-            sunIcon.classList.add("opacity-100");
-            if (moonIcon) {
-              moonIcon.classList.remove("opacity-100");
-              moonIcon.classList.add("opacity-0");
-            }
-          } else {
-            sunIcon.classList.remove("opacity-100");
-            sunIcon.classList.add("opacity-0");
-            if (moonIcon) {
-              moonIcon.classList.remove("opacity-0");
-              moonIcon.classList.add("opacity-100");
-            }
-          }
-          console.log("Toggled dark mode:", isDark);
+        // Assign Order Modal Logic
+        document.getElementById("assignOrderButton").addEventListener("click", function () {
+          document.getElementById("assignOrderModal").classList.remove("hidden");
         });
-      });
-    </script>
-    <!-- Chart Initialization Script -->
-    <script>
-      // Hard-coded data (replace with dynamic data later)
-      const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
-      const salesData = [2, 6, 3, 5, 8, 4];
-      const profitData = [1.5, 2.5, 2, 3.5, 5, 4.5];
   
-      // Bar Chart (Monthly Sales)
-      const salesCtx = document.getElementById('salesChart').getContext('2d');
-      new Chart(salesCtx, {
-        type: 'bar',
-        data: {
-          labels: labels,
-          datasets: [
-            {
-              label: 'Sales',
-              data: salesData,
-              backgroundColor: '#14b8a6',
-              borderColor: '#14b8a6',
-              borderWidth: 1,
-              borderRadius: 4,
-              barThickness: 40,
-            },
-          ],
-        },
-        options: {
-          responsive: true,
-          scales: {
-            y: {
-              beginAtZero: true,
-            },
-          },
-          plugins: {
-            legend: { display: false },
-          },
-        },
-      });
+        document.getElementById("cancelAssignOrder").addEventListener("click", function () {
+          document.getElementById("assignOrderModal").classList.add("hidden");
+        });
   
-      // Line Chart (Monthly Profit)
-      const profitCtx = document.getElementById('profitChart').getContext('2d');
-      new Chart(profitCtx, {
-        type: 'line',
-        data: {
-          labels: labels,
-          datasets: [
-            {
-              label: 'Profit',
-              data: profitData,
-              fill: false,
-              borderColor: '#0ea5e9',
-              backgroundColor: '#0ea5e9',
-              tension: 0.3,
-            },
-          ],
-        },
-        options: {
-          responsive: true,
-          scales: {
-            y: {
-              beginAtZero: true,
-            },
-          },
-          plugins: {
-            legend: { display: false },
-          },
-        },
+        document.getElementById("assignOrderForm").addEventListener("submit", function (e) {
+          e.preventDefault();
+          const newOrder = {
+            orderId: document.getElementById("newOrderId").value,
+            customerName: document.getElementById("newCustomerName").value,
+            email: document.getElementById("newEmail").value,
+            date: document.getElementById("newDate").value,
+            total: "$" + parseFloat(document.getElementById("newTotal").value).toFixed(2),
+            status: "Pending"
+          };
+          ordersData.push(newOrder);
+          filteredData = ordersData;
+          renderTable();
+          document.getElementById("assignOrderModal").classList.add("hidden");
+          this.reset();
+        });
+  
+        // Dark mode toggle logic
+        document.getElementById("themeToggle").addEventListener("click", function () {
+          document.documentElement.classList.toggle("dark");
+          const moon = document.getElementById("moonIcon");
+          const sun = document.getElementById("sunIcon");
+          if (document.documentElement.classList.contains("dark")) {
+            moon.style.opacity = "0";
+            sun.style.opacity = "1";
+          } else {
+            moon.style.opacity = "1";
+            sun.style.opacity = "0";
+          }
+        });
+  
+        renderTable();
       });
     </script>
   </body>
 </html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get the current file name from the URL.
+      const currentUrl = new URL(window.location.href);
+      // For example, if the pathname is "/delivery‑drivers.html", currentFile will be "delivery‑drivers.html"
+      const currentFile = currentUrl.pathname.substring(currentUrl.pathname.lastIndexOf('/') + 1) || "main-page-html.html";
+      
+      // Loop through all sidebar links in the <nav>
+      const navLinks = document.querySelectorAll('nav a');
+      
+      navLinks.forEach(link => {
+        // Build a URL object using the link's href (this handles relative paths)
+        const linkUrl = new URL(link.getAttribute('href'), window.location.origin);
+        const linkFile = linkUrl.pathname.substring(linkUrl.pathname.lastIndexOf('/') + 1);
+        
+        // Get the button inside the link
+        const btn = link.querySelector('button');
+        if (!btn) return;
+        
+        // If the file names match exactly, add the active classes;
+        // otherwise remove them.
+        if (linkFile === currentFile) {
+          btn.classList.add(
+            'bg-teal-50',
+            'dark:bg-teal-900/30',
+            'text-teal-600',
+            'dark:text-teal-400',
+            'font-medium',
+            'shadow-sm'
+          );
+          // If an active indicator element exists (the blue vertical div), ensure it is visible.
+          const indicator = btn.querySelector('div');
+          if (indicator) {
+            indicator.style.display = 'block';
+          }
+        } else {
+          btn.classList.remove(
+            'bg-teal-50',
+            'dark:bg-teal-900/30',
+            'text-teal-600',
+            'dark:text-teal-400',
+            'font-medium',
+            'shadow-sm'
+          );
+          // Hide the indicator if present.
+          const indicator = btn.querySelector('div');
+          if (indicator) {
+            indicator.style.display = 'none';
+          }
+        }
+      });
+    });
+    </script>
+    
